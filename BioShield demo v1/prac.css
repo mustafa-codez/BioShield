@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: url('images/dna-bg.png') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #fff;
+}
+
+/* ===== HEADER (Glassmorphism) ===== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 100px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 99;
+  transition: background 0.4s ease;
+}
+
+header.scrolled {
+  background: rgba(255, 0, 0, 0.3);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 0, 0, 0.4);
+}
+
+.logo {
+  font-size: 2em;
+  color: #fff;
+  user-select: none;
+}
+
+.navigation a {
+  font-size: 1.1em;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 40px;
+  position: relative;
+}
+
+.navigation a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  border-radius: 5px;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s;
+}
+
+.navigation a:hover::after,
+.navigation a.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.btn-login {
+  width: 120px;
+  height: 40px;
+  margin-left: 40px;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1em;
+  font-weight: 500;
+  transition: 0.4s;
+}
+
+.btn-login:hover {
+  background: #fff;
+  color: #162938;
+}
+
+/* ===== MAIN CONTENT ===== */
+main {
+  padding-top: 140px; /* avoid hiding behind header */
+}
+
+/* ===== DEMO BOX (Glassmorphism) ===== */
+.demo-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: 16px;
+  max-width: 600px;
+  margin: 50px auto;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  animation: neon-border 4s infinite alternate;
+}
+
+/* Neon glowing border */
+@keyframes neon-border {
+  0% { box-shadow: 0 0 10px rgba(220,20,60,0.7), 0 0 20px rgba(220,20,60,0.5); }
+  100% { box-shadow: 0 0 20px rgba(0,255,255,0.8), 0 0 40px rgba(0,255,255,0.6); }
+}
+
+/* ===== INPUT AREA ===== */
+.input-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.input-row textarea {
+  flex: 1;
+  min-width: 250px;
+  max-width: 500px;
+  min-height: 100px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.1em;
+  resize: vertical;
+}
+
+.input-row textarea {
+  flex: 1;
+  min-width: 250px;
+  max-width: 500px;
+  min-height: 120px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  outline: none;
+  background: rgba(0, 0, 0, 0.5);   /* darker glass for visibility */
+  color: #00ffcc;                   /* neon green text */
+  font-size: 1.1em;
+  resize: vertical;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.6); /* inner shadow */
+}
+
+.input-row textarea::placeholder {
+  color: rgba(200, 255, 255, 0.6);
+  font-style: italic;
+}
+
+
+.input-row button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(220, 20, 60, 0.8);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  align-self: flex-start;
+}
+
+.input-row button:hover {
+  background: rgba(220, 20, 60, 1);
+  transform: scale(1.05);
+}
+
+/* ===== RESULT BOX ===== */
+#result {
+  margin-top: 20px;
+  padding: 15px;
+  min-height: 60px; /* keeps box visible even if empty */
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.4); /* dark glass background */
+  color: #00ffcc; /* glowing greenish text */
+  font-weight: 600;
+  font-size: 1.1em;
+  word-wrap: break-word; /* wrap long text */
+  white-space: pre-wrap; /* preserve spaces & newlines */
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+/* ===== FADE-IN ANIMATION ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
