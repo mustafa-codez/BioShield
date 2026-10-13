@@ -1,4 +1,5 @@
 # 🧬 BioShield — Cyber Edition
+   **Live demo:** https://mustafa-codez.github.io/BioShield/
 
 A single-file web demo that rewrites text as a strand of DNA bases (A, C, G, T), locks it with a secret key, and then lets you attack your own cipher to see why it breaks.
 
